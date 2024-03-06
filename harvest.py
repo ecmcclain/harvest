@@ -15,7 +15,7 @@ class MelonType:
         self.first_harvest = first_harvest
         self.color = color
         self.is_seedless = is_seedless
-        self.is_bestseller = [] # i think since they dont all have this attribute, it should be a list? 
+        self.is_bestseller = is_bestseller # okay, saw the updated commenti think since they dont all have this attribute, it should be a list? / NEVERMIND! looks like it should be a boolean
         self.name = name
 
         self.pairings = []
@@ -41,8 +41,54 @@ def make_melon_types():
     """Returns a list of current melon types."""
 
     all_melon_types = []
+    
+    muskmelon = MelonType(
+        "musk", 
+        1998,   #wait :/
+        "green", #ooh haha sorry i just copied this from the lab , do you mean you would do Casaba?
+        True,    #ill do Crenshaw, if that's okay? yes. I jinxed self. there were tears, a near fight and..
+                #uh oh!! i hope everyone is okay?
+        True,
+        "Muskmelon"
+    )
+    muskmelon.add_pairing("mint")
+
+    casaba = MelonType(
+        "cas",
+        2003,
+        "orange",
+        True,
+        False,
+        "Casaba"
+    )
+    casaba.add_pairing("strawberries")
+    casaba.add_pairing("mint")
+
+
+    crenshaw = MelonType(
+        "cren",
+        1996,
+        "green",
+        False,
+        False,
+        "Crenshaw"
+    )
+    crenshaw.add_pairing("prosciutto")
+
+    yellow_watermelon = MelonType(
+        "yw",
+        2013,
+        "yellow",
+        True,
+        True,
+        "Yellow Watermelon"
+    )
+    yellow_watermelon.add_pairing("ice cream")
 
     # Fill in the rest
+
+    #add all these melons we just initialized to the all_melon_types_list
+    all_melon_types.extend([muskmelon, casaba, crenshaw, yellow_watermelon])
 
     return all_melon_types
 
@@ -51,12 +97,25 @@ def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
 
     # Fill in the rest
+    for melon in melon_types:
+        print(f"\n{melon.name} pairs well with")
+        for item in melon.pairings: 
+            print(f"- {item}")
 
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
 
     # Fill in the rest
+    reporting_codes = {}
+
+    for melon in melon_types:
+        reporting_codes[melon.code] = melon
+
+    #there was an issue here (of course). Can you just complete what you want and I will
+    #attempt the rest? /  Yes that works!
+    return reporting_codes
+
 
 
 ############
