@@ -127,16 +127,16 @@ class Melon:
     # Fill in the rest
     # Needs __init__ and is_sellable methods
     def __init__(
-        self, melon, shape, color, feild, harvester
+        self, melon_type, shape, color, field, harvester
     ):
-        self.melon = melon
+        self.melon_type = melon_type # instance of class MelonType
         self.shape = shape
         self.color = color
-        self.feild = feild
+        self.field = field
         self.harvester = harvester
 
     def is_sellable(self):
-        if self.shape > 5 and self.color > 5 and self.feild != 3:
+        if self.shape > 5 and self.color > 5 and self.field != 3:
             return True
         return False
 
@@ -164,6 +164,12 @@ def make_melons(melon_types):
 
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
+    for melon in melons:
+        if melon.is_sellable():
+            sellable = "(CAN BE SOLD)" 
+        else:
+            sellable = "(NOT SELLABLE)"
+        print(f"Harvested by {melon.harvester} from field {melon.field} {sellable}")
 
     # Fill in the rest
 
@@ -175,4 +181,6 @@ print(codes.items())
 print_pairing_info(melon_kinds)
 
 melons = make_melons(melon_kinds)
-print(melons[0].melon.name)
+print(melons[0].melon_type.name)
+
+get_sellability_report(melons)
